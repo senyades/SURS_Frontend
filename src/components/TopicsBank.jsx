@@ -43,7 +43,7 @@ const TopicBank = () => {
     const fetchData = async () => {
       try {
         // Загрузка преподавателей
-        const teachersResponse = await fetch('http://localhost:5000/user/teachers');
+        const teachersResponse = await fetch(`${process.env.REACT_APP_API_URL}/user/teachers`);
         if (!teachersResponse.ok) {
           throw new Error('Не удалось загрузить список преподавателей');
         }
@@ -51,7 +51,7 @@ const TopicBank = () => {
         setTeachers(teachersData);
         
         // Загрузка тем
-        const themesResponse = await fetch('http://localhost:5000/user/listthemes');
+        const themesResponse = await fetch(`${process.env.REACT_APP_API_URL}/user/listthemes`);
         if (!themesResponse.ok) {
           throw new Error('Не удалось загрузить список тем');
         }
@@ -164,7 +164,7 @@ const TopicBank = () => {
       };
 
       // Отправка запроса на сервер
-      const response = await fetch('http://localhost:5000/user/themes', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/user/themes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
